@@ -1,0 +1,31 @@
+import express from 'express';
+import mysql from 'mysql2/promise';
+
+const app = express();
+const PORT = 5000;
+
+// Create a connection pool (recommended for production apps)
+const pool = mysql.createPool({
+    host: 'localhost',
+    user: 'root',
+    password: 'mysql',
+    database: 'mysql',
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
+});
+
+// Sample route to fetch data
+app.get('/deptselect', async (req, res) => {
+    try {
+        const [rows] = await pool.query('SELECT * FROM dept'); // change table name if needed
+        res.json(rows);
+    } catch (err) {
+        console.error('Error fetching data:', err);
+        res.status(500).json({ error: 'Database error' });
+    }
+});
+
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+});
