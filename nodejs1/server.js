@@ -1,6 +1,8 @@
 import express from 'express';
 import mysql from 'mysql2/promise';
 
+import cors from  'cors'
+
 const app = express();
 const PORT = 5000;
 
@@ -14,6 +16,11 @@ const pool = mysql.createPool({
     connectionLimit: 10,
     queueLimit: 0
 });
+
+app.use(cors())
+app.use(express.json());
+
+
 
 // Sample route to fetch data
 app.get('/deptselect', async (req, res) => {
