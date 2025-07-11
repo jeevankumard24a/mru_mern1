@@ -4,12 +4,25 @@ import {useForm} from 'react-hook-form'
 type FormType = {
     userName: string;
 }
-
+//
 export default function PlayForm1(){
 const {register, handleSubmit}
     = useForm<FormType>();
-    const sendToServer=(formdata:FormType)=>{
+    const sendToServer=async (formdata:FormType)=>{
         console.log(formdata);
+
+        fetch('http://localhost:5000/users',{
+
+            method:'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify(formdata)
+
+        })
+
+
+
     }
     return(
         <div className="flex bg-white justify-center items-center w-full h-screen">

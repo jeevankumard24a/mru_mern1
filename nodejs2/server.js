@@ -23,10 +23,14 @@ app.use(express.json());
 
 
 // Sample route to fetch data
-app.get('/users', async (req, res) => {
+app.post('/users', async (req, res) => {
     try {
-        const username='kalam'
-        const [rows] = await pool.query('insert into users(username) values(?)',[username]); // change table name if needed
+        const {userName}= req.body;
+
+        console.log(`Received userName: ${userName}`);
+
+
+        const [rows] = await pool.query('insert into users(username) values(?)',[userName]); // change table name if needed
         res.json(rows);
     } catch (err) {
         console.error('Error fetching data:', err);
