@@ -20,7 +20,13 @@ export default function  BankCustomerForm(){
 
   const sendToServer = (data:BankCustomer)=>{
 
-    console.log("Data to be sent to the server:", data);
+    fetch("http://localhost:5000/bankcustomer", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    })
 
   }
   return(

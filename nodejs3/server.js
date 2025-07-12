@@ -26,10 +26,6 @@ app.use(express.json());
 app.post('/bankcustomer', async (req, res) => {
     try {
         const {customer_id,customer_name,bank_name,location}= req.body;
-
-
-
-
         const [rows] = await pool.query('insert into customer(customer_id,customer_name,bank_name,location) values(?,?,?,?)',[customer_id,customer_name,bank_name,location]); // change table name if needed
         res.json(rows);
     } catch (err) {
