@@ -1,0 +1,13 @@
+
+create tabel book{
+book_id    int,
+book_name  varchar,
+author_name varchar
+} ;
+
+insert into book(book_id, book_name,author_name) values (1,'AIML Baics','abc');
+insert into book(book_id, book_name,author_name) values(2,'Data Science Basics','def');
+
+UPDATE book
+SET author_name = 'xyz'
+WHERE book_id=1;
