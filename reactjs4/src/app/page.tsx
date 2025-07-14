@@ -17,14 +17,16 @@ export default function  BookForm(){
   } = useForm<Book>();
   const sendToServer = (data:Book)=>{
     console.log(data);
-    // fetch("http://localhost:5000/bankcustomer", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(data),
-    // })
+    fetch("http://localhost:5000/updateBook", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
   }
+
+
 
   return(
       <div  className="bg-slate-100  w-full  h-screen  flex flex-col gap-4 justify-center items-center"  >

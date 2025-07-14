@@ -20,8 +20,6 @@ const pool = mysql.createPool({
 app.use(cors())
 app.use(express.json());
 
-
-
 // Sample route to fetch data
 app.post('/bankcustomer', async (req, res) => {
     try {
